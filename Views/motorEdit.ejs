@@ -1,0 +1,503 @@
+<%- include ('./includes/head.ejs') %>
+      <div class="dash-main">
+        <!-- <div class="dash-main-top">
+          <div class="form-action-flexed">
+            <input
+              type="text"
+              class="input-space-search"
+              placeholder="Enter detail to search"
+            />
+            <button class="btn search">SEARCH</button>
+            <a href="new-client.html" class="btn other search">ADD NEW</a>
+          </div>
+        </div> -->
+
+        <div class="dash-main-body">
+          <div class="client-profile-page">
+            <div class="client-details">
+              <h2>Motor Policy Details</h2>
+             <form action="/motorEdit/<%=policy.id%>" method="POST" >
+                <input type="hidden" value="<%=policy.id%>" name="policyId">
+              <div class="client-details-row">
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Personal Name</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Policy Name"
+                        name="policyName"
+                        value="<%=policy.policyName%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Branch </label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Branch"
+                        name="branch"
+                        value="<%=policy.branch%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                        <label for="personal_accident"
+                            >Mv Class</label
+                          >
+                      <select
+                        name="mvClass"
+                        id="class_selection"
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected><%=policy.mvClass%></option>
+                        <option value="">--PRIVATE--</option>
+                        <option value="PMV">
+                          Private Motor Vehicle
+                        </option>
+                        <option value="Private Motor Cycle">
+                          Private Motor Cycle
+                        </option>
+                        <option value="">--COMMERCIAL--</option>
+                        <option value="General Cartage">
+                          General Cartage
+
+                        </option>
+                        <option value="Special Vehicles">
+                          Special Vehicles
+                        </option>
+                        <option value="Institution Vehicles">
+                          Institution Vehicles
+                        </option>
+                        <option value="Public Service Vehicles">
+                          Public Service Vehicles
+                        </option>
+                        <option value="Chauffer Drive">Chauffer Drive</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="benefits-list" id="benefits_list">
+                    <div class="benefits-content">
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                            
+                            id="excess_protector"
+                          
+                          />
+                          <label for="excess_protector">Excess Protector rate</label>
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="exPro"
+                                type="text"
+                                id="excess_basic_premium"
+                                class="user-reg-input"
+                                disabled
+                                placeholder="Basic Premium"
+                                value="<%=policy.exPro%>"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                            
+                            id="political_and_terror"
+                            value="Political Violence Terrorism"
+                          />
+                          <label for="political_and_terror"
+                            >Political Violence &amp; Terrorism Rate</label
+                          >
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="poliTe"
+                                type="number"
+                                disabled
+                                id="political_violence_basic_premium"
+                                class="user-reg-input"
+                                placeholder="Basic Premium"
+                                value="<%=policy.poliTe%>"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                          
+                            id="personal_accident"
+                            value="Personal Accident"
+                            
+                          />
+                          <label for="personal_accident"
+                            >Personal Accident</label
+                          >
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="perAcc"
+                                type="number"
+                                class="user-reg-input"
+                                disabled
+                                id="personal_accident_basic_premium"
+                                placeholder="Basic Premium"
+                                value="<%=policy.perAcc%>"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box-input">
+                          <div class="user-input-group" style="padding: 0">
+                            <input
+                          disabled
+                              class="user-reg-input"
+                              id="other_benefits_non"
+                              placeholder="Other Benefit"
+                              
+                            />
+                          </div>
+                        </div>
+                        <div class="check-box-input">
+                          <div class="user-input-group">
+                            <input
+                            name="otherBe"
+                              type="number"
+                              class="user-reg-input"
+                              id="other_benefits_basic_premium"
+                              placeholder="Basic Premium"
+                              value="<%=policy.otherBe%>"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Registration Number</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Registration Number"
+                        name="regN"
+                        value="<%=policy.regN%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >other benefit name/description</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Other benefit name/description"
+                        name="otherName"
+                        value="<%=policy.otherName%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                        <label for="personal_accident"
+                            >Insurer</label
+                          >
+                      <select
+                        name="insurer"
+                        id=""
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="<%=policy.isurer%>" selected><%=policy.policyName%></option>
+                        <option value="Sanlum">Sanlum</option>
+                        <option value="Jubilee">Jubilee</option>
+                        <option value="AAR">AAR</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Engine Number</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Engine Number"
+                        name="engineNumber"
+                        value="<%=policy.engineNumber%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="user-split-row">
+                    <label for="personal_accident"
+                    >Stamp Duty</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                      name="stampDuty"
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Stamp Duty"
+                        value="<%=policy.stampDuty%>"
+                       
+                      />
+                    </div>
+                   
+                  </div>
+                
+                </div>
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Cover Type</label
+                  >
+                    <div class="user-input-group">
+                      <select
+                        name="coverType"
+                        id=""
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="<%=policy.coverType%>" selected><%=policy.coverType%></option>
+                        <option value="Comprehensive">Comprehensive</option>
+                        <option value="Third Party">Third Party</option>
+                        <option value="Third Party Fire and Theft">Third Party Fire &amp; Theft</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Policy Number</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Policy Number"
+                        name="policyNumber"
+                        value="<%=policy.policyNumber%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Policy Period
+                    </p>
+                    <div class="user-split-row">
+                      <div class="user-input-group">
+                        <input
+                        name="policyStart"
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="From"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          value="<%=policy.policyStart%>"
+                        />
+                      </div>
+                      <div class="user-input-group">
+                        <input
+                        name="policyEnd"
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="To"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          value="<%=policy.policyEnd%>"
+                          
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >sum Insured</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Sum Insured"
+                        name="sumInsured"
+                        value="<%=policy.sumInsured%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Logbook Number</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                  
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Logbook Number"
+                        name="logBookNumber"
+                        value="<%=policy.logBookNumber%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <label for="personal_accident"
+                    >Chasis Number</label
+                  >
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Chasis Number"
+                        name="chasisNumber"
+                        value="<%=policy.chasisNumber%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="user-split-row">
+                    policy Rate
+                    <div class="user-input-group">
+                      <input
+                      name="rate"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Rate"
+                        value="<%=policy.rate%>"
+                        
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="client-documents">
+              <!-- <h2>Scan Documents</h2> -->
+              <!-- <div
+                class="upload-holder"
+                style="
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <label class="kra_label" for="kra_upload"> Logbook </label>
+                
+                <input
+                  type="file"
+                  id="kra_upload"
+                  class="input-upload-documents"
+                  
+                />
+                <p class="upload-file-info-kra"></p>
+              </div> -->
+            </div>
+            <div class="btn-holder" style="margin: 0 0 2rem 0">
+              <button class="create-btn" type="submit">Edit</button>
+            </div>
+          </form>
+          </div>
+        </div>
+
+        <div class="date-time">
+          <%- include ('./includes/date.ejs') %>
+        </div>
+      </div>
+      <%- include ('./includes/sidePane.ejs') %>
+    </div>
+    <script type="text/javascript" src="upload-files.js"></script>
+    <script>
+      var classs = document.getElementById("class_selection");
+      var selected = classs.options[classs.selectedIndex].value;
+
+      var benefits_list = document.getElementById("benefits_list");
+
+      var personal_accident = document.getElementById("personal_accident");
+      var personal_accident_basic_premium = document.getElementById(
+        "personal_accident_basic_premium"
+      );
+      var excess_protector = document.getElementById("excess_protector");
+      var excess_basic_premium = document.getElementById(
+        "excess_basic_premium"
+      );
+      var political_violence_basic_premium = document.getElementById(
+        "political_violence_basic_premium"
+      );
+      var political_and_terror = document.getElementById(
+        "political_and_terror"
+      );
+
+      classs.addEventListener("change", function () {
+        if (classs.options[classs.selectedIndex].value == "") {
+          benefits_list.style.height = "0";
+          benefits_list.style.opacity = "0";
+        } else {
+          benefits_list.style.height = "auto";
+          benefits_list.style.opacity = "1";
+          benefits_list.style.pointerEvents = "all";
+        }
+      });
+
+      excess_protector.addEventListener("change", function () {
+        if (excess_protector.checked) {
+          excess_basic_premium.disabled = false;
+        } else {
+          excess_basic_premium.disabled = true;
+        }
+      });
+
+      political_and_terror.addEventListener("change", function () {
+        if (political_and_terror.checked) {
+          political_violence_basic_premium.disabled = false;
+        } else {
+          political_violence_basic_premium.disabled = true;
+        }
+      });
+
+      personal_accident.addEventListener("change", function () {
+        if (personal_accident.checked) {
+          personal_accident_basic_premium.disabled = false;
+        } else {
+          personal_accident_basic_premium.disabled = true;
+        }
+      });
+    </script>
+  </body>
+</html>

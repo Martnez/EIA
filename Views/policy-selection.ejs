@@ -6,7 +6,7 @@
             <input
               type="text"
               class="input-space-search"
-              placeholder="Search User Logs"
+              placeholder="Enter detail to search"
               id="myInput"
               onkeyup="myFunction()"
             />
@@ -18,28 +18,29 @@
           <table class="info-list-table">
             <thead>
               <tr>
-                <th>Task Performed</th>
-                <th>Date Performed</th>
-                <th>Time</th>
-                <th>User Account</th>
+                <th>Policy Number.</th>
+                <th>Client Name</th>
+                <th>Sum Insured</th>
+                <th>Type of Cover</th>
+                <th>From</th>
+                <th>To</th>
               </tr>
             </thead>
-
             <tbody id="myTable">
-           
-            <% if(logs.length > 0) { %> 
-              <% for(let log of logs) { %>
-              <tr onclick="document.location=''">
-                <td><%=log.task %></td>
-                <td><%=log.date %></td>
-                <td><%=log.time %></td>
-                <td><%=log.user.firstName%>  <%=log.user.lastName%></td>
+              <% if(policies.length > 0) { %> 
+                <% for(let policy of policies) { %>
+              <tr onclick="document.location='/new-claim/<%= policy.id %>'">
+                <td><%= policy.policyNumber%></td>
+                <td><%= policy.client.firstName%>  <%= policy.client.lastName%></td>
+                <td><%= policy.sumInsured%></td>
+                <td><%= policy.coverType%></td>
+                <td><%= policy.policyStart%></td>
+                <td><%= policy.policyEnd%></td>
               </tr>
               <% } %>
               <% } else { %>
                 <h2>nothing to display</h2>
             <% } %>
-              
             </tbody>
           </table>
         </div>
@@ -75,6 +76,5 @@
           }
       }
     </script>
-
   </body>
 </html>

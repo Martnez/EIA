@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/css/style.css">
-    <title><%= pageTitle %></title>
-</head>
-<body>
-    <div class="dash-container">
-        <div class="dash-top">
-            <div class="dash-top-right">
-                <img src="/images/avatar.jpg" alt="Profile Image">
-                <h3>Enzo Wo</h3>
-            </div>
-        </div>
+<%- include ('./includes/head.ejs') %>
 
         <div class="dash-main">
             <div class="dash-main-top">
                 <div class="form-action-flexed">
-                    <input type="text" class="input-space-search" placeholder="Enter detail to search">
+                    <input 
+                    type="text" class="input-space-search"
+                     placeholder="Enter detail to search"
+                      id="myInput"
+                      onkeyup="myFunction()"
+                      >
                     <button class="btn search">SEARCH</button>
-                    <a href="new-policy.html" class="btn other search">ADD NEW</a>
+                    <a href="/new-client" class="btn other search">ADD NEW</a>
                 </div>
             </div>
 
@@ -46,78 +31,23 @@
                             </tr>
                     </thead>
                     
-                    <tbody>
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
+                    <tbody id="myTable">
+                        <% if(policies.length > 0) { %> 
+                            <% for(let policy of policies) { %>
+                                <input type="hidden" value="<%=policy.id%>" name="policyId">
+                        <tr onclick="document.location='/policyView/<%=policy.id%>'">
+                            <td><%= policy.regN %></td>
+                            <td><%= policy.client.firstName%>  <%= policy.client.lastName%></td>
+                            <td><%= policy.sumInsured %></td>
+                            <td><%= policy.coverType %> </td>
+                            <td><%= policy.policyStart %></td>
+                            <td><%= policy.policyEnd %></td>
                         </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Kamau</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
-                        
-                        <tr onclick="document.location='mv-details.html'">
-                            <td>KBL 084R</td>
-                            <td>Stephen Muraya</td>
-                            <td>Kshs 700000</td>
-                            <td>Comprehensive</td>
-                            <td>8-Mar-2021</td>
-                            <td>7-Mar-2022</td>
-                        </tr>
+                        <% } %>
+                        <% } else { %>
+                          <h2>nothing to display</h2>
+                      <% } %>
+                       
                     </tbody>
                 </table>
             </div>
@@ -130,5 +60,28 @@
         </div>
         <%- include ('./includes/sidePane.ejs') %>
     </div>
+    <script>
+        function myFunction() {
+            var input, filter, found, table, tr, td, i, j;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                    }
+                }
+                if (found) {
+                    tr[i].style.display = "";
+                    found = false;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+      </script>
 </body>
 </html>

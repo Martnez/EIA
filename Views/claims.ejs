@@ -6,11 +6,12 @@
             <input
               type="text"
               class="input-space-search"
-              placeholder="Search User Logs"
+              placeholder="Enter detail to search"
               id="myInput"
               onkeyup="myFunction()"
             />
             <button class="btn search">SEARCH</button>
+            <a href="/policy-selection" class="btn other search">ADD NEW</a>
           </div>
         </div>
 
@@ -18,28 +19,34 @@
           <table class="info-list-table">
             <thead>
               <tr>
-                <th>Task Performed</th>
-                <th>Date Performed</th>
-                <th>Time</th>
-                <th>User Account</th>
+                <th>Policy No.</th>
+                <th>Sum Insured</th>
+                <th>Claim Amount</th>
+                <th>Paid Amount</th>
+                <th>Compensation</th>
+                <th>Date of loss</th>
+                
+                <th>Date of offer</th>
               </tr>
             </thead>
 
             <tbody id="myTable">
-           
-            <% if(logs.length > 0) { %> 
-              <% for(let log of logs) { %>
-              <tr onclick="document.location=''">
-                <td><%=log.task %></td>
-                <td><%=log.date %></td>
-                <td><%=log.time %></td>
-                <td><%=log.user.firstName%>  <%=log.user.lastName%></td>
+              <% if(claims.length > 0) { %> 
+                <% for(let claim of claims) { %>
+                  <input type='hidden' value="<%= claim.id %>" name="claimId">
+              <tr onclick="document.location='/singleClaim/<%=claim.id %>'">
+                <td><%=claim.policy.regN%></td>
+                <td><%=claim.policy.sumInsured%></td>
+                <td><%=claim.claimAmount%></td>
+                <td><%=claim.offerAmount%></td>
+                <td><%=claim.compensation%></td>
+                <td><%=claim.lossDate%></td>
+                <td><%=claim.offerDate%></td>
               </tr>
               <% } %>
               <% } else { %>
                 <h2>nothing to display</h2>
             <% } %>
-              
             </tbody>
           </table>
         </div>
@@ -75,6 +82,5 @@
           }
       }
     </script>
-
   </body>
 </html>

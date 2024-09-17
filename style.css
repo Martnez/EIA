@@ -1360,23 +1360,25 @@ td.users {
   justify-content: center;
   align-items: center;
 }
-.download-document:last-child:hover {
+/* .download-document:last-child:hover {
   background-color: #f51313;
 }
 .download-document:last-child {
   background-color: #db1212;
-}
+} */
 .download-document:hover {
   background-color: #3260c4;
 }
 .download-document {
   text-decoration: none;
   background-color: #35569b;
-  border: none;
   height: 100%;
   width: 100%;
+  padding: 0.7rem 2.5rem;
   flex: 1;
   display: flex;
+  border-radius: 0;
+  border: none;
   margin: 0 1px;
   color: #fff;
   font-weight: 500;
@@ -1402,85 +1404,4 @@ td.users {
   align-items: center;
   justify-content: center;
   margin: 0;
-}
-.policy-data-holder {
-  width: 100%;
-  min-height: 90vh;
-  background-color: var(--background-grey);
-  display: flex;
-  flex-direction: column;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  border-radius: 0.2rem;
-  padding: 1rem;
-  align-items: center;
-}
-.header-policy-data {
-  margin: 1rem;
-}
-.top-policy-data {
-  width: 100%;
-  display: flex;
-  padding: 1rem 0;
-  flex-direction: column;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.329);
-  align-items: center;
-}
-.policy-top-data-info {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-.policy-top-data-col {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-left: 3rem;
-}
-.policy-info-desc {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.policy-info-desc h4 {
-  font-weight: 500;
-  margin: 1rem;
-}
-.doc-policy-data {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.documents-list {
-  width: 100%;
-}
-.edit-details-link:hover {
-  background-color: #e21515;
-  transform: scale(1.02);
-  transition: all 150ms ease-in-out;
-}
-.edit-details-link:last-child:hover {
-  background-color: #4fc061;
-}
-.edit-details-link:last-child {
-  background-color: #529e5f;
-}
-.edit-details-link {
-  width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2rem;
-  border-radius: 0;
-  transition: all 250ms linear;
-}
-.other-benefits-display {
-  background-color: rgb(255, 255, 255);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 0.3rem;
 }

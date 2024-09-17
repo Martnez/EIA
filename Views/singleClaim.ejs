@@ -1,0 +1,529 @@
+<%- include ('./includes/head.ejs') %>
+
+      <div class="dash-main">
+        <!-- <div class="dash-main-top">
+          <div class="form-action-flexed">
+            <input
+              type="text"
+              class="input-space-search"
+              placeholder="Enter detail to search"
+            />
+            <button class="btn search">SEARCH</button>
+            <a href="new-client.html" class="btn other search">ADD NEW</a>
+          </div>
+        </div> -->
+
+        <div class="dash-main-body">
+          <form action="/singleClaim/<%= claims.id %>" method="POST">
+          <div class="client-profile-page">
+            <!-- <div class="client-details">
+              <h2>New Claim</h2>
+              <% if(claims.length > 0) { %> 
+                <% for(let claim of claims) { %>
+              <div class="client-details-row">
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <p
+                    style="
+                      width: 100%;
+                      padding-left: 1rem;
+                      text-align: center;
+                    "
+                  >
+                    Policy Number
+                  </p>
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        disabled
+                        class="user-reg-input"
+                        placeholder="Policy Number"
+                        value="<%= claim.policy.policyNumber %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info" style="margin-top: 1.4rem">
+                    <p
+                    style="
+                      width: 100%;
+                      padding-left: 1rem;
+                      text-align: center;
+                    "
+                  >
+                    Registration Number
+                  </p>
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        disabled
+                        placeholder="Reg Number"
+                        value="<%=claim.policy.regN %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <p
+                    style="
+                      width: 100%;
+                      padding-left: 1rem;
+                      text-align: center;
+                    "
+                  >
+                    Cover Type
+                  </p>
+                    <div class="user-input-group">
+                      <select
+                        name=""
+                        id=""
+                        disabled
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected><%=claim.policy.coverType %></option>
+                        <option value="">--INDIVIDUAL--</option>
+                        <option value="">Personal Accident</option>
+                        <option value="">Professional Indemnity</option>
+                        <option value="">Others</option>
+                        <option value="">--CORPORATE--</option>
+                        <option value="">Contrators all risk</option>
+                        <option value="">Marine Cargo</option>
+                        <option value="">Fidelity Guarantee</option>
+                        <option value="">Work injury benefit</option>
+                        <option value="">Public Liability</option>
+                        <option value="">Fire and Perils</option>
+                        <option value="">Bulglary</option>
+                        <option value="">
+                          Contactor's Plant and Machinery
+                        </option>
+                        <option value="">Goods in transit</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <p
+                    style="
+                      width: 100%;
+                      padding-left: 1rem;
+                      text-align: center;
+                    "
+                  >
+                    Insurer
+                  </p>
+                    <div class="user-input-group">
+                      <select
+                        name=""
+                        id=""
+                        class="user-reg-input"
+                        disabled
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected><%=claim.policy.insurer %></option>
+                        <option value="">Sanlum</option>
+                        <option value="">Jubilee</option>
+                        <option value="">AAR</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Policy Period
+                    </p>
+                    <div class="user-split-row">
+                      <div class="user-input-group">
+                        <input
+                          type="text"
+                          class="user-reg-input"
+                          disabled
+                          placeholder="From"
+                          value="<%=claim.policy.policyStart %>"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                        />
+                      </div>
+                      <div class="user-input-group">
+                        <input
+                          type="text"
+                          disabled
+                          class="user-reg-input"
+                          placeholder="<%=claim.policy.policyEnd %>"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <p
+                    style="
+                      width: 100%;
+                      padding-left: 1rem;
+                      text-align: center;
+                    "
+                  >
+                    sum insured
+                  </p>
+                    <div class="user-input-group">
+                      <input
+                        type="number"
+                        disabled
+                        class="user-reg-input"
+                        placeholder="<%=claim.policy.sumInsured %>"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+              <% } else { %>
+                <h2>nothing to display</h2>
+            <% } %>
+
+              <div class="btn-holder" style="margin: 0 0 2rem 0">
+               
+              </div>
+            </div> -->
+            <div class="client-documents">
+              <h2>Input Sections</h2>
+              <div class="client-details-row">
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <div class="user-split-row">
+                      <div class="user-input-group">
+                        <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Report Date
+                    </p>
+                        <input
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="Report Date"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          name="reportDate"
+                          value="<%=claims.reportDate %>"
+                        />
+                      </div>
+                      <div class="user-input-group">
+                        <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Loss Date
+                    </p>
+                        <input
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="Date of Loss"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          name="lossDate"
+                          value="<%=claims.lossDate%>"
+                          c
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Claim Type
+                    </p>
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="claim Type"
+                        name="claimType"
+                        value="<%=claims.claimType %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      claim description
+                    </p>
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="claim description"
+                        name="description"
+                        value="<%=claims.description %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Compensation
+                    </p>
+                      <select
+                        name="comp"
+                        id=""
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                        
+                      >
+                      <option value="<%=claims.compensation %>" selected><%=claims.compensation %></option>
+                      <option value="Cash-in-Lieu">Cash-in-Lieu</option>
+                      <option value="Authorize Repair">Authorize Repair</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Claim Reporter
+                    </p>
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Reporter"
+                        name="reporter"
+                        value="<%=claims.reporter %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                    <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Claim Reporter Contacts
+                    </p>
+                    </p>
+                      <input
+                        type="tel"
+                        class="user-reg-input"
+                        placeholder="Contact"
+                        name="reporterContact"
+                        value="<%=claims.reporterContact %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <!-- <div class="user-input-group">
+                      <select
+                        name=""
+                        id=""
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected>Compensation</option>
+                        <option value="Cash-in-Lieu">Cash-in-Lieu</option>
+                        <option value="Authorize Repair">Authorize Repair</option>
+                      </select>
+                    
+                    </div> -->
+                  </div>
+                </div>
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Claim Amount
+                    </p>
+                      <input
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Claim Amount"
+                        name="claimAmount"
+                        value="<%=claims.claimAmount %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Offer Amount
+                    </p>
+                      <input
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Offer Amount"
+                        name="offerAmount"
+                        value="<%=claims.offerAmount %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-split-row">
+                      <div class="user-input-group">
+                        <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Offer Date
+                    </p>
+                        <input
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="Offer Date"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          name="offerDate"
+                          value="<%=claims.offerDate%>"
+                        />
+                      </div>
+                      <div class="user-input-group">
+                        <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Compensation Date
+                    </p>
+                        <input
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="Compensation Date"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                          name="compDate"
+                          value="<%=claims.compDate%>"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Garaged At
+                    </p>
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Garaged At"
+                        name="garagedAt"
+                        value="<%=claims.garagedAt%>"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Garage
+                    </p>
+                      <input
+                        type="tel"
+                        class="user-reg-input"
+                        placeholder="Contact"
+                        name="garageContact"
+                        value="<%=claims.garageContact%>"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="btn-holder" style="margin: 0 0 2rem 0">
+              <input type="hidden" value="<%= claims.id %>" name="claimId">
+              <button class="create-btn" type="submit"> Edit</button>
+            </div>
+          </div>
+          </form>
+        </div>
+
+        <div class="date-time">
+          <%- include ('./includes/date.ejs') %>
+        </div>
+      </div>
+      <%- include ('./includes/sidePane.ejs') %>
+    </div>
+    <script>
+      var policy = document.getElementById("new_policy");
+      var pop_up_back = document.getElementById("popup_background");
+      var pop_up_panel = document.getElementById("popup_panel");
+      policy.addEventListener("click", () => {
+        pop_up_back.classList.toggle("show");
+        pop_up_panel.classList.toggle("show");
+      });
+
+      pop_up_panel.addEventListener("click", () => {
+        pop_up_back.classList.remove("show");
+        pop_up_panel.classList.remove("show");
+      });
+    </script>
+    <script type="text/javascript" src="upload-files.js"></script>
+  </body>
+</html>

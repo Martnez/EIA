@@ -1,0 +1,290 @@
+<%- include ('./includes/head.ejs') %>
+
+      <div class="dash-main">
+        <div class="marque" style="margin: 15px 0">
+          <marquee
+            direction="left"
+            style="background: #ffffff; color: #3260c4; height: 50px"
+          >
+            <h2
+              style="
+                background: #ffffff;
+                color: #3260c4;
+                height: 50px;
+                padding-top: 10px;
+              "
+            >
+              <b
+                >REMEMBER TO ALWAYS WEAR YOUR MASK AND SANTIZE WHEN COMING INTO
+                THE OFFICE OR LEAVING. FROM MANAGEMENT</b
+              >
+            </h2>
+          </marquee>
+        </div>
+        <div class="productivity-row">
+          <div class="productivity-content">
+            <div class="calendar"></div>
+            <div class="tasks-card">
+              <h3 class="productivity-title" style="margin-bottom: 1rem">
+                Tasks for You
+              </h3>
+              <table class="info-list-table">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>From</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr onclick="document.location=''">
+                    <td>Enter new records</td>
+                    <td>Enzo</td>
+                    <td>Pending</td>
+                    <td>July 7th</td>
+                  </tr>
+                  <tr onclick="document.location=''">
+                    <td>Update Underwriting</td>
+                    <td>Kelvin</td>
+                    <td>Pending</td>
+                    <td>July 20th</td>
+                  </tr>
+                  <tr onclick="document.location=''">
+                    <td>Check Finance Data</td>
+                    <td>Enzo</td>
+                    <td>Pending</td>
+                    <td>May 13th</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div
+          class="calendar-row"
+          style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          "
+        >
+          <div class="cal-content" style="width: 70%">
+            <div class="productivity-card">
+              <h2 class="productivity-title">Productivity Score</h2>
+              <div class="bar-levels">
+                <p>Hours or work</p>
+                <div class="bar-level"><p>70%</p></div>
+                <p>Work Output</p>
+                <div class="bar-level"><p>80%</p></div>
+                <p>Business Waste</p>
+                <div class="bar-level"><p>20%</p></div>
+              </div>
+              <div class="eia-img">
+                <img src="./images/eia_logo.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include ('./includes/sidePane.ejs') %>
+    </div>
+    <script>
+      function CalendarControl() {
+        const calendar = new Date();
+        const calendarControl = {
+          localDate: new Date(),
+          calWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+          calMonthName: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          daysInMonth: function (month, year) {
+            return new Date(year, month, 0).getDate();
+          },
+          firstDay: function () {
+            return new Date(calendar.getFullYear(), calendar.getMonth(), 1);
+          },
+          lastDay: function () {
+            return new Date(calendar.getFullYear(), calendar.getMonth() + 1, 0);
+          },
+          firstDayNumber: function () {
+            return calendarControl.firstDay().getDay() + 1;
+          },
+          lastDayNumber: function () {
+            return calendarControl.lastDay().getDay() + 1;
+          },
+          getPreviousMonthLastDate: function () {
+            let lastDate = new Date(
+              calendar.getFullYear(),
+              calendar.getMonth(),
+              0
+            ).getDate();
+            return lastDate;
+          },
+          navigateToPreviousMonth: function () {
+            calendar.setMonth(calendar.getMonth() - 1);
+            calendarControl.attachEventsOnNextPrev();
+          },
+          navigateToNextMonth: function () {
+            calendar.setMonth(calendar.getMonth() + 1);
+            calendarControl.attachEventsOnNextPrev();
+          },
+          navigateToCurrentMonth: function () {
+            let currentMonth = calendarControl.localDate.getMonth();
+            let currentYear = calendarControl.localDate.getFullYear();
+            calendar.setMonth(currentMonth);
+            calendar.setYear(currentYear);
+            calendarControl.attachEventsOnNextPrev();
+          },
+          displayYear: function () {
+            let yearLabel = document.querySelector(
+              ".calendar .calendar-year-label"
+            );
+            yearLabel.innerHTML = calendar.getFullYear();
+          },
+          displayMonth: function () {
+            let monthLabel = document.querySelector(
+              ".calendar .calendar-month-label"
+            );
+            monthLabel.innerHTML =
+              calendarControl.calMonthName[calendar.getMonth()];
+          },
+          selectDate: function (e) {
+            console.log(
+              `${e.target.textContent} ${
+                calendarControl.calMonthName[calendar.getMonth()]
+              } ${calendar.getFullYear()}`
+            );
+          },
+          plotSelectors: function () {
+            document.querySelector(
+              ".calendar"
+            ).innerHTML += `<div class="calendar-inner"><div class="calendar-controls">
+      <div class="calendar-prev"><a href="#"><</a></div>
+      <div class="calendar-year-month">
+      <div class="calendar-month-label"></div>
+      <div>-</div>
+      <div class="calendar-year-label"></div>
+      </div>
+      <div class="calendar-next"><a href="#">></a></div>
+      </div>
+      <div class="calendar-today-date">Today: 
+        ${calendarControl.calWeekDays[calendarControl.localDate.getDay()]}, 
+        ${calendarControl.localDate.getDate()}, 
+        ${calendarControl.calMonthName[calendarControl.localDate.getMonth()]} 
+        ${calendarControl.localDate.getFullYear()}
+      </div>
+      <div class="calendar-body"></div></div>`;
+          },
+          plotDayNames: function () {
+            for (let i = 0; i < calendarControl.calWeekDays.length; i++) {
+              document.querySelector(
+                ".calendar .calendar-body"
+              ).innerHTML += `<div>${calendarControl.calWeekDays[i]}</div>`;
+            }
+          },
+          plotDates: function () {
+            document.querySelector(".calendar .calendar-body").innerHTML = "";
+            calendarControl.plotDayNames();
+            calendarControl.displayMonth();
+            calendarControl.displayYear();
+            let count = 1;
+            let prevDateCount = 0;
+            //let prevMonthLastDate = calendarControl.getPreviousMonthLastDate();
+            let calendarDays = calendarControl.daysInMonth(
+              calendar.getMonth() + 1,
+              calendar.getFullYear()
+            );
+
+            // dates of current month
+            for (let i = 1; i < calendarDays; i++) {
+              if (i < calendarControl.firstDayNumber()) {
+                prevDateCount += 1;
+                document.querySelector(
+                  ".calendar .calendar-body"
+                ).innerHTML += `<div class="empty-dates"></div>`;
+              } else {
+                let currentMonth = calendarControl.localDate.getMonth() + 1;
+                let changedMonth = calendar.getMonth() + 1;
+                let currentYear = calendarControl.localDate.getFullYear();
+                let changedYear = calendar.getFullYear();
+                if (
+                  currentYear === changedYear &&
+                  currentMonth === changedMonth &&
+                  count === calendar.getDate()
+                ) {
+                  document.querySelector(
+                    ".calendar .calendar-body"
+                  ).innerHTML += `<div class="calendar-today"><a class="dateNumber" href="#">${count++}</a></div>`;
+                } else
+                  document.querySelector(
+                    ".calendar .calendar-body"
+                  ).innerHTML += `<div><a class="dateNumber" href="#">${count++}</a></div>`;
+              }
+            }
+
+            //remaining dates after month dates
+            for (let j = 0; j < prevDateCount + 1; j++) {
+              document.querySelector(
+                ".calendar .calendar-body"
+              ).innerHTML += `<div><a class="dateNumber" href="#">${count++}</a></div>`;
+            }
+          },
+          attachEvents: function () {
+            let prevBtn = document.querySelector(".calendar .calendar-prev a");
+            let nextBtn = document.querySelector(".calendar .calendar-next a");
+            let todayDate = document.querySelector(
+              ".calendar .calendar-today-date"
+            );
+            let dateNumber = document.querySelectorAll(".calendar .dateNumber");
+            prevBtn.addEventListener(
+              "click",
+              calendarControl.navigateToPreviousMonth
+            );
+            nextBtn.addEventListener(
+              "click",
+              calendarControl.navigateToNextMonth
+            );
+            todayDate.addEventListener(
+              "click",
+              calendarControl.navigateToCurrentMonth
+            );
+            for (var i = 0; i < dateNumber.length; i++) {
+              dateNumber[i].addEventListener(
+                "click",
+                calendarControl.selectDate,
+                false
+              );
+            }
+          },
+          attachEventsOnNextPrev: function () {
+            calendarControl.plotDates();
+            calendarControl.attachEvents();
+          },
+          init: function () {
+            calendarControl.plotSelectors();
+            calendarControl.plotDates();
+            calendarControl.attachEvents();
+          },
+        };
+        calendarControl.init();
+      }
+
+      const calendarControl = new CalendarControl();
+    </script>
+  </body>
+</html>

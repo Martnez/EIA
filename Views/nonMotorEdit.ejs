@@ -1,0 +1,545 @@
+<%- include ('./includes/head.ejs') %>
+
+      <div class="dash-main">
+        <!-- <div class="dash-main-top">
+          <div class="form-action-flexed">
+            <input
+              type="text"
+              class="input-space-search"
+              placeholder="Enter detail to search"
+            />
+            <button class="btn search">SEARCH</button>
+            <a href="new-client.html" class="btn other search">ADD NEW</a>
+          </div>
+        </div> -->
+        <form action="" method="POST">
+        <div class="dash-main-body">
+          <div class="client-profile-page">
+            <div class="client-details">
+              <h2>Non-Motor Policy Details</h2>
+              <div class="client-details-row">
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="policyName"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Policy Name/ Project Name"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="baranch"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Branch"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <select
+                        name="coverType"
+                        id="class_selection"
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected>Select Cover Type</option>
+                        <option value="">--INDIVIDUAL--</option>
+                        <option value="Personal Accident">
+                          Personal Accident
+                        </option>
+                        <option value="Professional Indemnity">
+                          Professional Indemnity
+                        </option>
+                        <option value="Others">Others</option>
+                        <option value="">--CORPORATE--</option>
+                        <option value="Contrators all risk">
+                          Contrators all risk
+                        </option>
+                        <option value="Marine Cargo">Marine Cargo</option>
+                        <option value="Fidelity Guarantee">
+                          Fidelity Guarantee
+                        </option>
+                        <option value="Work Injury Benefit">
+                          Work Injury Benefit
+                        </option>
+                        <option value="Public Liability">
+                          Public Liability
+                        </option>
+                        <option value="Fire and Perils">Fire and Perils</option>
+                        <option value="Bulglary">Bulglary</option>
+                        <option value="Contactor's Plant and Machinery">
+                          Contactor's Plant and Machinery
+                        </option>
+                        <option value="Goods in transit">Goods in transit</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="businessNumber"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Business/ Project Number"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <select
+                        name="insurer"
+                        id=""
+                        class="user-reg-input"
+                        style="padding: 0 0 0 1rem"
+                      >
+                        <option value="" selected>Select Insurer</option>
+                        <option value="Sanlum">Sanlum</option>
+                        <option value="Jubilee">Jubilee</option>
+                        <option value="AAR">AAR</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="employees"
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="No. of employees"
+                      />
+                    </div>
+                  </div>
+                  <!-- <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Engine Number"
+                        name="engineNumber"
+                      />
+                    </div>
+                  </div> -->
+                  <div class="user-split-row">
+                    <div class="user-input-group">
+                      <input
+                      name="stampDuty"
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Stamp Duty"
+                       
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="details-col">
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="policyNumber"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Policy Number"
+                      />
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <p
+                      style="
+                        width: 100%;
+                        padding-left: 1rem;
+                        text-align: center;
+                      "
+                    >
+                      Policy Period
+                    </p>
+                    <div class="user-split-row">
+                      <div class="user-input-group">
+                        <input
+                        name="policyStart"
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="From"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                        />
+                      </div>
+                      <div class="user-input-group">
+                        <input
+                        name="policyEnd"
+                          type="text"
+                          class="user-reg-input"
+                          placeholder="To"
+                          onblur="(this.type='text')"
+                          onfocus="(this. type='date')"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="client-prof-info">
+                    <div class="user-input-group">
+                      <input
+                      name="sumInsured"
+                        type="number"
+                        class="user-reg-input"
+                        placeholder="Sum Insured"
+                      
+                      />
+                    </div>
+                  </div>
+                  <div class="benefits-list" id="benefits_list_non">
+                    <h3>Benefits</h3>
+                    <div class="benefits-content">
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input type="checkbox" name="" id="third_party" />
+                          <label for="third_party">Third Party Liability</label>
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="TPBP"
+                                type="number"
+                                id="third_party_basic_premium"
+                                class="user-reg-input"
+                                disabled
+                                placeholder="Basic Premium"
+                            
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input type="checkbox" name="" id="maintenance" />
+                          <label for="maintenance">Maintenance</label>
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="MBP"
+                                type="number"
+                                disabled
+                                id="maintenance_basic_premium"
+                                class="user-reg-input"
+                                placeholder="Basic Premium"
+                              
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box-input">
+                          <div class="user-input-group" style="padding: 0">
+                            <input
+                              type="text"
+                              disabled
+                              class="user-reg-input"
+                              id="other_benefits_non"
+                              placeholder="Other Benefit"
+                              
+                            />
+                          </div>
+                        </div>
+                        <div class="check-box-input">
+                          <div class="user-input-group">
+                            <input
+                            name="otherBe"
+                              type="number"
+                              class="user-reg-input"
+                              id="other_benefits_basic_premium"
+                              placeholder="Basic Premium"
+                            
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="benefits-list" id="benefits_list_two">
+                    <h3>Work Injury Benefit Benefits</h3>
+                    <div class="benefits-content">
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                            name=""
+                            id="employee_liability"
+                          />
+                          <label for="employee_liability"
+                            >Employers Liability</label
+                          >
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="ELBP"
+                                type="number"
+                                id="employee_liability_basic_premium"
+                                class="user-reg-input"
+                                disabled
+                                placeholder="Basic Premium"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                            name=""
+                            id="personal_accident_non"
+                          />
+                          <label for="personal_accident_non"
+                            >Personal Accident</label
+                          >
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="PANBP"
+                                type="number"
+                                disabled
+                                id="personal_accident_non_basic_premium"
+                                class="user-reg-input"
+                                placeholder="Basic Premium"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="benefits-list" id="benefits_list_three">
+                    <h3>Contactor's Plant and Machinery Benefits</h3>
+                    <div class="benefits-content">
+                      <div class="check-box-holder">
+                        <div class="check-box">
+                          <input
+                            type="checkbox"
+                            name=""
+                            id="third_party_plant_machinery"
+                          />
+                          <label for="third_party_plant_machinery"
+                            >Third Party Liability</label
+                          >
+                        </div>
+                        <div class="check-box-input">
+                          <div class="client-prof-info">
+                            <div class="user-input-group">
+                              <input
+                              name="TPPMBP"
+                                type="number"
+                                id="third_party_plant_machinery_basic_premium"
+                                class="user-reg-input"
+                                disabled
+                                placeholder="Basic Premium"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="user-split-row">
+                    <div class="user-input-group">
+                      <input
+                      name="otherName"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Other benefit name/description"
+                      />
+                    </div>
+                    <div class="user-input-group">
+                      <input
+                      name="rate"
+                        type="text"
+                        class="user-reg-input"
+                        placeholder="Rate"
+                        
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="client-documents">
+              <h2>Scan Documents</h2>
+              <div
+                class="upload-holder"
+                style="
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <label class="kra_label" for="kra_upload">
+                  Certificate of Incorporation
+                </label>
+                <input
+                  type="file"
+                  id="kra_upload"
+                  class="input-upload-documents"
+                />
+                <p class="upload-file-info-kra"></p>
+              </div>
+            </div>
+            <div class="btn-holder" style="margin: 0 0 2rem 0">
+             
+              <button class="create-btn" type="submit">Create Policy</button>
+            </div>
+          </div>
+        </div>
+      </form>
+        <div class="date-time">
+          <%- include ('./includes/date.ejs') %>
+        </div>
+      </div>
+      <%- include ('./includes/sidePane.ejs') %>
+    </div>
+    <script type="text/javascript" src="upload-files.js"></script>
+    <script>
+      var classs = document.getElementById("class_selection");
+      var selected = classs.options[classs.selectedIndex].value;
+
+      var benefits_list = document.getElementById("benefits_list_non");
+      var benefits_list_two = document.getElementById("benefits_list_two");
+      var benefits_list_three = document.getElementById("benefits_list_three");
+
+      var third_party = document.getElementById("third_party");
+      var third_party_basic_premium = document.getElementById(
+        "third_party_basic_premium"
+      );
+      var maintenance = document.getElementById("maintenance");
+      var maintenance_basic_premium = document.getElementById(
+        "maintenance_basic_premium"
+      );
+
+      var third_party_plant_machinery = document.getElementById(
+        "third_party_plant_machinery"
+      );
+      var third_party_plant_machinery_basic_premium = document.getElementById(
+        "third_party_plant_machinery_basic_premium"
+      );
+      var employee_liability = document.getElementById("employee_liability");
+      var employee_liability_basic_premium = document.getElementById(
+        "employee_liability_basic_premium"
+      );
+      var personal_accident_non = document.getElementById(
+        "personal_accident_non"
+      );
+      var personal_accident_non_basic_premium = document.getElementById(
+        "personal_accident_non_basic_premium"
+      );
+
+      var other_benefits = document.getElementById("other_benefits_non");
+      var other_benefits_val = document.getElementById("other_benefits_non")
+        .value;
+      var other_benefits_basic_premium = document.getElementById(
+        "other_benefits_basic_premium"
+      );
+
+      classs.addEventListener("change", function () {
+        if (classs.options[classs.selectedIndex].value == "") {
+          benefits_list.style.height = "0";
+          benefits_list.style.opacity = "0";
+          benefits_list.style.pointerEvents = "none";
+          benefits_list_two.style.height = "0";
+          benefits_list_two.style.opacity = "0";
+          benefits_list_two.style.pointerEvents = "none";
+          benefits_list_three.style.height = "0";
+          benefits_list_three.style.opacity = "0";
+          benefits_list_three.style.pointerEvents = "none";
+        } else if (
+          classs.options[classs.selectedIndex].value == "Work Injury Benefit"
+        ) {
+          benefits_list_three.style.height = "0";
+          benefits_list_three.style.opacity = "0";
+          benefits_list_three.style.pointerEvents = "none";
+          benefits_list_two.style.height = "auto";
+          benefits_list_two.style.opacity = "1";
+          benefits_list_two.style.pointerEvents = "all";
+          benefits_list.style.height = "0";
+          benefits_list.style.opacity = "0";
+          benefits_list.style.pointerEvents = "none";
+        } else if (
+          classs.options[classs.selectedIndex].value ==
+          "Contactor's Plant and Machinery"
+        ) {
+          benefits_list_three.style.height = "auto";
+          benefits_list_three.style.opacity = "1";
+          benefits_list_three.style.pointerEvents = "all";
+          benefits_list_two.style.height = "0";
+          benefits_list_two.style.opacity = "0";
+          benefits_list_two.style.pointerEvents = "none";
+          benefits_list.style.height = "0";
+          benefits_list.style.opacity = "0";
+          benefits_list.style.pointerEvents = "none";
+        } else {
+          benefits_list_three.style.height = "0";
+          benefits_list_three.style.opacity = "0";
+          benefits_list_three.style.pointerEvents = "none";
+          benefits_list_two.style.height = "0";
+          benefits_list_two.style.opacity = "0";
+          benefits_list_two.style.pointerEvents = "none";
+          benefits_list.style.height = "auto";
+          benefits_list.style.opacity = "1";
+          benefits_list.style.pointerEvents = "all";
+        }
+      });
+
+      third_party.addEventListener("change", function () {
+        if (third_party.checked) {
+          third_party_basic_premium.disabled = false;
+        } else {
+          third_party_basic_premium.disabled = true;
+        }
+      });
+
+      maintenance.addEventListener("change", function () {
+        if (maintenance.checked) {
+          maintenance_basic_premium.disabled = false;
+        } else {
+          maintenance_basic_premium.disabled = true;
+        }
+      });
+
+      third_party_plant_machinery.addEventListener("change", function () {
+        if (third_party_plant_machinery.checked) {
+          third_party_plant_machinery_basic_premium.disabled = false;
+        } else {
+          third_party_plant_machinery_basic_premium.disabled = true;
+        }
+      });
+      employee_liability.addEventListener("change", function () {
+        if (employee_liability.checked) {
+          employee_liability_basic_premium.disabled = false;
+        } else {
+          employee_liability_basic_premium.disabled = true;
+        }
+      });
+      personal_accident_non.addEventListener("change", function () {
+        if (personal_accident_non.checked) {
+          personal_accident_non_basic_premium.disabled = false;
+        } else {
+          personal_accident_non_basic_premium.disabled = true;
+        }
+      });
+    </script>
+  </body>
+</html>

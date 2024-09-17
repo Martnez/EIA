@@ -1,0 +1,167 @@
+<%- include ('./includes/head.ejs') %>
+
+      <div class="dash-main">
+        <!-- <div class="dash-main-top">
+          <div class="form-action-flexed">
+            <input
+              type="text"
+              class="input-space-search"
+              placeholder="Enter detail to search"
+            />
+            <button class="btn search">SEARCH</button>
+            <a href="new-client.html" class="btn other search">ADD NEW</a>
+          </div>
+        </div> -->
+
+        <div class="dash-main-body">
+          <div class="policy-data-holder">
+            <div class="top-policy-data">
+              <div class="header-policy-data">
+                <h2><%=policy.policyName%></h2>
+              </div>
+              <div class="policy-top-data-info">
+                <div class="policy-top-data-col">
+                  <div class="policy-info-desc">
+                    <h3>Policy Name/ Project Name</h3>
+                    <h4><%=policy.policyName%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Branch</h3>
+                    <h4><%=policy.branch%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Cover Type</h3>
+                    <h4><%=policy.coverType%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Business/ Project Number</h3>
+                    <h4><%=policy.businessNumber%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Insurer</h3>
+                    <h4><%=policy.insurer%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>No. of Employees</h3>
+                    <h4><%=policy.employees%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Stamp Duty</h3>
+                    <h4><%=policy.stampDuty%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Policy Number</h3>
+                    <h4><%=policy.policyNumber%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Policy Period</h3>
+                    <h4><%=policy.policyStart%> to <%=policy.policyEnd%></h4>
+                  </div>
+                </div>
+
+                <div class="policy-top-data-col">
+                  <div class="policy-info-desc">
+                    <h3>Sum Insured</h3>
+                    <h4><%=policy.sumInsured%></h4>
+                  </div>
+                  <div class="policy-info-desc">
+                    <h3>Policy Rate</h3>
+                    <h4><%=policy.rate%></h4>
+                  </div>
+                  <div class="other-benefits-display">
+                    <h2 style="font-size: 23px; border-bottom: 2px solid #000">
+                      Policy Benefits
+                    </h2>
+                    <div class="policy-info-desc">
+                      <h3>Third Party Liability</h3>
+                      <h4><%=policy.TPPMBP%></h4>
+                    </div>
+                    <div class="policy-info-desc">
+                      <h3>Maintenance</h3>
+                      <h4><%=policy.MBP%></h4>
+                    </div>
+                    <div class="policy-info-desc">
+                      <h3>Employers Liability</h3>
+                      <h4><%=policy.ELBP%></h4>
+                    </div>
+                    <div class="policy-info-desc">
+                      <h3>Personal Accident</h3>
+                      <h4><%=policy.PANBP%></h4>
+                    </div>
+                    <div class="policy-info-desc">
+                      <h3>Other Benefit</h3>
+                      <h4><%=policy.otherBe%></h4>
+                      <h3>Rate</h3>
+                      <h4><%=policy.rate%></h4>
+                    </div>
+                    <div
+                      class="policy-info-desc"
+                      style="
+                        border: 1px solid rgb(48, 82, 128);
+                        justify-content: center;
+                        max-width: 300px;
+                        flex-wrap: wrap;
+                        padding: 1em;
+                      "
+                    >
+                      <h3 style="color: rgb(48, 82, 128)">CREATED BY:</h3>
+                      <h3><%=policy.signature%></h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="policy-info-desc"
+                style="justify-content: center; margin: 2rem 0"
+              >
+                <a href="/policyEdit/<%=policy.id%>" class="btn edit-details-link">Edit Details</a>
+                <input type="hidden" value="<%=policy.id%>" name="policyId">
+                <a href="" class="btn edit-details-link">Upload Documents</a>
+              </div>
+            </div>
+            <div class="doc-policy-data">
+              <h2 class="doc-title-policy">Chine Wu-Yi Documents</h2>
+
+              <div class="documents-list">
+                <div class="document-card">
+                  <div class="document-info-holder">
+                    <h4>Name:</h4>
+                    <h5>Indexfile</h5>
+                  </div>
+                  <div class="document-info-holder">
+                    <h4>Type:</h4>
+                    <h5>pdf</h5>
+                  </div>
+                  <div class="options">
+                    <a href="" class="download-document">Download</a>
+                    <a href="" class="download-document">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="date-time">
+         <%- include ('./includes/date.ejs') %>
+        </div>
+      </div>
+      <%- include ('./includes/sidePane.ejs') %>
+    </div>
+    <script>
+      const file_upload = document.querySelector("#upload_file_all");
+      file_upload.addEventListener("change", (e) => {
+        // Get the selected file
+        const [file] = e.target.files;
+        // Get the file name and size
+        const { name: fileName, size } = file;
+        // Convert size in bytes to kilo bytes
+        const fileSize = (size / 1000).toFixed(2);
+        // Set the text content
+        const fileNameAndSize = `${fileName} - ${fileSize}KB`;
+        document.querySelector(".upload-files-input-info").textContent =
+          fileNameAndSize;
+      });
+    </script>
+  </body>
+</html>

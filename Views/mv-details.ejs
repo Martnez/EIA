@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/css/style.css">
-    <title><%= pageTitle %></title>
-</head>
-<body>
-    <div class="dash-container">
-        <div class="dash-top">
-            <div class="dash-top-right">
-                <img src="/images/avatar.jpg" alt="Profile Image">
-                <h3>Enzo Wo</h3>
-            </div>
-        </div>
-
+<%- include ('./includes/head.ejs') %>
         <div class="dash-main">
             <div class="dash-main-top">
                 <div class="form-action-flexed">
@@ -36,11 +15,11 @@
 
                 <div class="mv-info-page">
                     <div class="mv-info-title">
-                        <h3>Reg. No: </h3> <h4>KCR 376M</h4>
+                        <h3>Reg. No: </h3> <h4><%= policy.regN %></h4>
                     </div>
                     <div class="mv-column">
                         <div class="mv-info">
-                            <h4>Chassis: </h4> <h6>SV30-0169266</h6>
+                            <h4>Chassis: </h4> <h6><%= policy.chasisNumber%></h6>
                         </div>
                         <div class="mv-info">
                             <h4>Make: </h4> <h6>Honda</h6>
@@ -58,7 +37,7 @@
                             <h4>Rating: </h4> <h6>80%</h6>
                         </div>
                         <div class="mv-info">
-                            <h4>Eng. No: </h4> <h6>52WVC10338</h6>
+                            <h4>Eng. No: </h4> <h6><%= policy.engineNumber %></h6>
                         </div>
                         <div class="mv-info">
                             <h4>Color: </h4> <h6>Dark Green</h6>
